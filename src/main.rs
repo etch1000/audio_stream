@@ -4,7 +4,7 @@ use rodio::{Decoder, OutputStream, source::Source};
 fn main() {
     let (_stream, stream_handle) = OutputStream::try_default().unwrap();
     let file = BufReader::new(File::open("./files/audio.mp3").unwrap());
-    let source = Decoder::new(file).unwrap();
+    let source = Decoder::new_mp3(file).unwrap();
     // let time = source.cloned();
     stream_handle.play_raw(source.convert_samples());
 
